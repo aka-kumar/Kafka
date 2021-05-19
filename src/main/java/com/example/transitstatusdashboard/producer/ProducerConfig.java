@@ -17,9 +17,6 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 @Component
 @Slf4j
@@ -34,25 +31,6 @@ public class ProducerConfig {
 
     @Autowired
     ObjectMapper objectMapper;
-
-//    public void sendTrainArrival(TrainArrival trainArrival) throws JsonProcessingException {
-//
-//        Integer key = trainArrival.getStation_id();
-//        String value = objectMapper.writeValueAsString(trainArrival);
-//
-//        ListenableFuture<SendResult<Integer,String>> listenableFuture =  kafkaTemplate.sendDefault(key,value);
-//        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
-//            @Override
-//            public void onFailure(Throwable ex) {
-//                handleFailure(key, value, ex);
-//            }
-//
-//            @Override
-//            public void onSuccess(SendResult<Integer, String> result) {
-//                handleSuccess(key, value, result);
-//            }
-//        });
-//    }
 
     public ListenableFuture<SendResult<Integer,String>> sendTrainArrival(TrainArrival trainArrival) throws JsonProcessingException {
 
@@ -85,25 +63,6 @@ public class ProducerConfig {
 
         return new ProducerRecord<>(topic, null, key, value, recordHeaders);
     }
-
-//    public SendResult<Integer, String> sendTrainArrivalSynchronous(TrainArrival trainArrival) throws JsonProcessingException, ExecutionException, InterruptedException, TimeoutException {
-//
-//        Integer key = trainArrival.getStation_id();
-//        String value = objectMapper.writeValueAsString(trainArrival);
-//        SendResult<Integer,String> sendResult=null;
-//        try {
-//            sendResult = kafkaTemplate.sendDefault(key,value).get(1, TimeUnit.SECONDS);
-//        } catch (ExecutionException | InterruptedException e) {
-//            log.error("ExecutionException/InterruptedException Sending the Message and the exception is {}", e.getMessage());
-//            throw e;
-//        } catch (Exception e) {
-//            log.error("Exception Sending the Message and the exception is {}", e.getMessage());
-//            throw e;
-//        }
-//
-//        return sendResult;
-//
-//    }
 
     public ListenableFuture<SendResult<Integer,String>> sendTurnstileEvent(TurnstileEvent turnstileEvent) throws JsonProcessingException {
 

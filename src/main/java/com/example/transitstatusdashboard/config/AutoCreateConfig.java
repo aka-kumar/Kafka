@@ -39,4 +39,12 @@ public class AutoCreateConfig {
                 .replicas(1)
                 .build();
     }
+
+    @Bean
+    public NewTopic station(){
+        return TopicBuilder.name("org.station.stations")
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
 }

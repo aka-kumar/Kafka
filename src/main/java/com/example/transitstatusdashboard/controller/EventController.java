@@ -65,9 +65,9 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.OK).body(turnstileEvent);
     }
 
-//    @GetMapping("/stationdata")
-//    public @ResponseBody Iterable<Station>  findStationData(){
-//        // This returns a JSON
-//        return stationRepository.findAll();
-//    }
+    @GetMapping("/stationdata")
+    public @ResponseBody Iterable<Station>  findStationData(){
+        // This returns a JSON
+        return stationRepository.findAll();
+    }
 }
