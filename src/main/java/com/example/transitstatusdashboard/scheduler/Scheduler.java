@@ -18,7 +18,7 @@ public class Scheduler {
     @Autowired
     ProducerConfig producerConfig;
 
-    @Scheduled(cron = "5 * * * * *")
+    @Scheduled(cron = "0 0/1 * * * ?")
     public void cronJobSch() throws Exception {
         System.out.println("Java Cron job for Data Syncing started.");
 
